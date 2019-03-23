@@ -1,0 +1,58 @@
+#membuat sebuah class dalam python
+## class <class_name> :
+        ##<atribute1> ->>>public 
+        ##<__atribute2>->>private
+        ##<atributeN>
+        
+        ##def __init__(self,<atrribute>)
+
+class Karyawan :
+    nama=""
+    dept=""
+    bagian=""
+    gender=""
+    __gapok=10000000
+    status_kar= True 
+    
+    def __init__(self,vnama,vdept,vbag,vgender,vst_kar):
+        self.nama=vnama
+        self.dept=vdept
+        self.bagian=vbag
+        self.gender=vgender
+        self.status_kar=vst_kar
+        
+    def getGapok(self):           #methode untuk mengambil 
+        return self.__gapok       #nilai atribute private
+    
+    def setGapok(self,vgapok):
+        self.__gapok=vgapok
+    
+    def genderDesc(self):
+        if self.gender=="L":
+            return "Laki-laki"
+        else:
+            return "Perempuan"
+    
+    def statusDesc(self):
+        if self.status_kar :
+            return "Tetap"
+        else :
+            return "Kontrak"
+    
+    def uangLembur(self):
+        return 1/173 * self.__gapok
+    
+    def jamLembur(self,jamAktual):
+        if jamAktual>1 :
+            return 1.5 + ((jamAktual-1)*2)
+        else :
+            return 1.5
+    
+kar1=Karyawan("dedi","hrd","staf","P",False)
+kar2=Karyawan("dede","accounting","staf AR","P",True)
+kar1.setGapok(4300000)
+
+print("Nama karyawan1 :", kar1.nama)
+print("Nama karyawan1 :", kar1.gender, "(" , kar1.genderDesc(),")")
+print("Status karyawan :", kar1.statusDesc())
+print("Uang lembur 10 jam  :", kar1.uangLembur()*kar1.jamLembur(10))
